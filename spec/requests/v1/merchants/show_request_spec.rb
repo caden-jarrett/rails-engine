@@ -1,21 +1,29 @@
 require 'rails_helper'
 
 describe "The Merchant Show API" do
-    describe 'happy path'
+    describe 'happy path' do
         it "responds with a single merchant following the merchant id" do
             create_list(:merchant, 3)
 
-            get '/api/v1/merchants/1'
+            get api_v1_merchant_path(Merchant.last.id)
             
             expect(response).to be_successful
 
             merchant = JSON.parse(response.body, symbolize_names: true)
 
-            expect(merchant[:data].count).to eq(1)
-
             
-            expect(merchant).to have_key(:id)
-            expect(merchant[:attributes][:name]).to be_an(String)
+            expect(merchant[:data]).to have_key(:id)
+            expect(merchant[:data][:attributes][:name]).to be_an(String)
         end
-    end
-end 
+    end 
+
+    describe 'sad path' do
+        it "responds with a 404 error, meaning we dont have a merchant with that id" do
+            create_list(:merchant, 1)
+
+            get api_v1_merchant_path(101)
+            
+            expect(response.status).to eq(404)
+        end
+    end 
+end
