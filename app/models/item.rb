@@ -1,3 +1,3 @@
 class Item < ApplicationRecord
-    belongs_to :animal
+    belongs_to :merchant
 end
