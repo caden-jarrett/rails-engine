@@ -21,7 +21,7 @@ describe "The Merchant Show API" do
         it "responds with a 404 error, meaning we dont have a merchant with that id" do
             create_list(:merchant, 1)
 
-            get api_v1_merchant_path(101)
+            get api_v1_merchant_path(1000000000000000000000000001)
             
             expect(response.status).to eq(404)
         end

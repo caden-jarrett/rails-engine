@@ -6,20 +6,20 @@ describe "The Item Index API" do
     
     
     get api_v1_merchant_items_path(Merchant.last.id)
-    
+
     expect(response).to be_successful
 
-    merchant = JSON.parse(response.body, symbolize_names: true)
+    items = JSON.parse(response.body, symbolize_names: true)
 
-     expect(merchants.items.count).to eq(3)
+    expect(items[:data].count).to eq(5)
 
-    merchants.items.each do |item|
+    items[:data].each do |item|
       expect(item).to have_key(:id)
-      expect(item).to have_key(:merchant_id)
+      expect(item[:attributes]).to have_key(:merchant_id)
       expect(item[:attributes][:name]).to be_an(String)
 
       expect(item[:attributes][:description]).to be_an(String)
-      expect(item[:attributes][:unit_price]).to be_an(Integer)
+      expect(item[:attributes][:unit_price]).to be_an(Float)
     end
   end
 end 
