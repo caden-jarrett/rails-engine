@@ -10,11 +10,11 @@ describe "The Merchant Index API" do
 
     merchants = JSON.parse(response.body, symbolize_names: true)
 
-     expect(merchants.count).to eq(3)
+     expect(merchants[:data].count).to eq(3)
 
-    merchants.each do |merchant|
+    merchants[:data].each do |merchant|
       expect(merchant).to have_key(:id)
-      expect(merchant[:name]).to be_an(String)
+      expect(merchant[:attributes][:name]).to be_an(String)
     end
   end
 end 
