@@ -14,7 +14,7 @@ describe 'Create/Delete Item API' do
 
     post "/api/v1/items", headers: headers, params: JSON.generate(item: item_params)
     new_item = Item.last
-    binding.pry
+    
     expect(response).to be_successful
     expect(new_item.name).to eq(item_params[:name])
     expect(new_item.description).to eq(item_params[:description])
@@ -28,7 +28,7 @@ describe 'Create/Delete Item API' do
 
     expect(Item.count).to eq(5)
 
-    delete "/api/v1/item/#{item.id}"
+    delete "/api/v1/items/#{item.id}"
     
     deleted_item_response = JSON.parse(response.body, symbolize_names: true)
 
