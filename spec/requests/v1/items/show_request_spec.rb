@@ -11,12 +11,12 @@ describe "The Item Show API" do
     item = JSON.parse(response.body, symbolize_names: true)
 
   
-    expect(item).to have_key(:id)
-    expect(item[:id]).to eq(Item.last.id)
-    expect(item[:id]).to be_a(String)
-    expect(item[:attributes]).to have_key(:merchant_id)
-    expect(item[:attributes][:name]).to be_an(String)
-    expect(item[:attributes][:description]).to be_an(String)
-    expect(item[:attributes][:unit_price]).to be_an(Float)
+    expect(item[:data]).to have_key(:id)
+    expect(item[:data][:id]).to eq(Item.last.id.to_s)
+    expect(item[:data][:id]).to be_a(String)
+    expect(item[:data][:attributes]).to have_key(:merchant_id)
+    expect(item[:data][:attributes][:name]).to be_an(String)
+    expect(item[:data][:attributes][:description]).to be_an(String)
+    expect(item[:data][:attributes][:unit_price]).to be_an(Float)
   end
 end 
