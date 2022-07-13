@@ -1,10 +1,10 @@
-require 'rails_rspec'
+require 'rails_helper'
 
 describe 'Item Merchant API' do
     it 'returns the merchant of the item as a response' do
         create(:merchant)
 
-        visit api_v1_items_merchant_path(Item.last.id)
+        visit api_v1_items_merchants_path(Item.last.id)
 
         expect(response).to be_successful
 
