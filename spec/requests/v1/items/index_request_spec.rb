@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "The Item Index API" do
-  it "sends a list of merchants as a response" do
+  it "sends a list of items as a response" do
     create_list(:merchant, 3)
 
     get '/api/v1/items'
