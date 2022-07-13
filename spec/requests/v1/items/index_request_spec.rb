@@ -10,11 +10,12 @@ describe "The Item Index API" do
 
     items = JSON.parse(response.body, symbolize_names: true)
 
-     expect(merchants[:data].count).to eq(3)
+     expect(items[:data].count).to eq(15)
 
     items[:data].each do |item|
       expect(item).to have_key(:id)
-      expect(item).to have_key(:merchant_id)
+      expect(item[:id]).to be_a(String)
+      expect(item[:attributes]).to have_key(:merchant_id)
       expect(item[:attributes][:name]).to be_an(String)
       expect(item[:attributes][:description]).to be_an(String)
       expect(item[:attributes][:unit_price]).to be_an(Float)
