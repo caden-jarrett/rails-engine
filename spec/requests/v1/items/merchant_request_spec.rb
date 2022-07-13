@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe 'Item Merchant API' do
     it 'returns the merchant of the item as a response' do
-        create(:merchant)
+        merchant = create(:merchant)
 
-        visit api_v1_items_merchants_path(Item.last.id)
+        get "/api/v1/items/#{Item.last.id}/merchant/#{merchant.id}"
 
         expect(response).to be_successful
 
