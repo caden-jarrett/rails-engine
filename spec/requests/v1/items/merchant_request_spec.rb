@@ -10,8 +10,7 @@ describe 'Item Merchant API' do
 
         merchant = JSON.parse(response.body, symbolize_names: true)
 
-        expect(merchant).to be_a(Merchant)
-        expect(merchant[data]).to have_key(:id)
+        expect(merchant[:data]).to have_key(:id)
         expect(merchant[:data][:attributes][:name]).to be_a(String)
     end
 
