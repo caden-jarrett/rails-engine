@@ -14,25 +14,25 @@
 
 ## Installation
 
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/caden-jarrett/rails-engine
    ```
-3. Install Ruby 2.7.4 and Rails 5.2.7
+2. Install Ruby 2.7.4 and Rails 5.2.7
 
 3. Install required gems using the included gemfile
    ```sh
    bundle install
    ```
-3. Create Postgresql database, run migrations and seed database
+4. Create Postgresql database, run migrations and seed database
    ```sh
    rails db:{create,migrate,seed}
    ```
-3. Launch local server
+5. Launch local server
    ```sh
    rails s
    ```
-3. Use a browser or tool like PostMan to explore the API on http://localhost:3000
+6. Use a browser or tool like PostMan to explore the API on http://localhost:3000
    ```sh
    http://localhost:3000
    ```
