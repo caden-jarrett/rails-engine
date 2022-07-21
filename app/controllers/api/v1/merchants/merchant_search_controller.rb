@@ -1,5 +1,6 @@
 class Api::V1::Merchants::MerchantSearchController < ApplicationController
 
+    #show off
     def find 
         merchant = Merchant.search_merchants(params[:name])
         if merchant != nil
